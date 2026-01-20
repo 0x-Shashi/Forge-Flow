@@ -58,22 +58,6 @@ const AINode = memo(({ data, selected }: NodeProps<AINodeData>) => {
           </div>
         </div>
 
-        {/* Execution Result - NEW SECTION */}
-        {data.output && (
-          <div className="mt-2 pt-2 border-t border-[var(--border-subtle)]">
-             <span className="text-[10px] text-[var(--text-tertiary)] uppercase tracking-wider block mb-1">
-              Result
-            </span>
-            <div className="p-2 bg-[#050505] border border-[var(--border-light)] max-h-[100px] overflow-y-auto custom-scrollbar">
-              <p className="text-[10px] font-mono text-white whitespace-pre-wrap">
-                {typeof data.output === 'object' && data.output !== null 
-                  ? String((data.output as Record<string, unknown>).response ?? JSON.stringify(data.output, null, 2))
-                  : String(data.output)
-                }
-              </p>
-            </div>
-          </div>
-        )}
       </div>
 
       <Handle

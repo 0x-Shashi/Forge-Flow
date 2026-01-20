@@ -41,21 +41,6 @@ const ActionNode = memo(({ data, selected }: NodeProps<ActionNodeData>) => {
         </span>
       </div>
 
-      {/* Execution Result - NEW SECTION */}
-      {data.output && (
-        <div className="px-4 pb-3">
-          <div className="pt-2 border-t border-[var(--border-subtle)]">
-             <span className="text-[10px] text-[var(--text-tertiary)] uppercase tracking-wider block mb-1">
-              Result
-            </span>
-            <div className="p-2 bg-[#050505] border border-[var(--border-light)] overflow-y-auto custom-scrollbar max-h-[100px]">
-              <p className="text-[10px] font-mono text-white whitespace-pre-wrap break-all">
-                {JSON.stringify(data.output, null, 2)}
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 });
