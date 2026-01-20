@@ -1,0 +1,183 @@
+@import "tailwindcss";
+
+/* 
+  ForgeFlow PREMIUM DESIGN SYSTEM 
+  Aesthetic: Dark, Industrial, Cement, Minimalist.
+  Rules: No colors. Only Black, White, and Greys. 
+*/
+
+:root {
+  /* Core Palette */
+  --bg-app: #050505;          /* Deepest black for background */
+  --bg-panel: #0a0a0a;        /* Slightly lighter for panels/sidebar */
+  --bg-card: #111111;         /* Cards/Nodes */
+  
+  --border-subtle: #1a1a1a;   /* Very subtle borders */
+  --border-light: #333333;    /* Highlight borders */
+  
+  --text-primary: #ffffff;
+  --text-secondary: #888888;
+  --text-tertiary: #444444;
+
+  /* Status Indicators (Monochrome) */
+  --status-active: #ffffff;   /* Active state is just white */
+  --status-inactive: #333333;
+
+  /* Node Variables (Mapping old vars to new monochrome) */
+  --node-bg: #0a0a0a;
+  --node-border: #222222;
+  --node-border-selected: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--bg-app);
+  --color-foreground: var(--text-primary);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* RESET & BASE */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif; /* Need to ensure Inter is loaded in layout */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* UTILITIES */
+
+/* The "Cement" Card Look */
+.cement-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px; /* Sharper corners */
+  transition: all 0.2s ease;
+}
+
+.cement-card:hover {
+  border-color: var(--border-light);
+  transform: translateY(-1px);
+}
+
+/* Premium Button - Outline style */
+.btn-premium {
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+  padding: 8px 16px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+  border-radius: 2px;
+}
+
+.btn-premium:hover {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+/* Primary Action Button (Solid White) */
+.btn-premium-primary {
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #ffffff;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 2px;
+  transition: opacity 0.2s;
+}
+
+.btn-premium-primary:hover {
+  opacity: 0.9;
+}
+
+/* REACT FLOW OVERRIDES - STRIPPING COLORS */
+
+.react-flow__background {
+  background-color: var(--bg-app) !important;
+  /* Subtle grid pattern */
+  background-image: 
+    linear-gradient(var(--border-subtle) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px) !important;
+  background-size: 40px 40px !important; 
+  opacity: 0.1;
+}
+
+.react-flow__edge-path {
+  stroke: #ffffff !important;
+  stroke-width: 1px !important;
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke: #fff !important;
+  stroke-width: 2px !important;
+}
+
+.react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #000;
+  border: 1px solid #666;
+  border-radius: 0; /* Square handles for industrial look */
+}
+
+.react-flow__handle:hover {
+  background: #fff;
+  border-color: #fff;
+}
+
+.react-flow__minimap {
+  background: var(--bg-panel) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: 0 !important;
+}
+
+.react-flow__controls {
+  background: var(--bg-panel) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.react-flow__controls button {
+  border-bottom: 1px solid var(--border-subtle) !important;
+  border-radius: 0 !important;
+}
+
+.react-flow__controls button svg {
+  fill: var(--text-secondary) !important;
+}
+
+.react-flow__controls button:hover svg {
+  fill: var(--text-primary) !important;
+}
+
+/* REMOVING OLD GLOW CLASSES TO PREVENT LEAKAGE */
+.node-trigger, .node-api, .node-ai, .node-logic, .node-action {
+  box-shadow: none !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-app);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border: 2px solid var(--bg-app);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
